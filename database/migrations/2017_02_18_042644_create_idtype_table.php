@@ -14,6 +14,13 @@ class CreateIdtypeTable extends Migration
     public function up()
     {
         //
+        if (!Schema::hasTable('idtype')) {
+            Schema::create('idtype', function (Blueprint $table) {
+                $table->increments('id')->index();
+                $table->string('name');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -24,5 +31,6 @@ class CreateIdtypeTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('idtype');
     }
 }

@@ -20,144 +20,168 @@
                 <input class="btn btn-primary" id="btnn" type="submit" value="Appoinment" style="width: 120px; margin-top: 10px; margin-left: 10px;" />
                 <input class="btn btn-primary" id="btnn" type="submit" value="Report" style="width: 120px; margin-top: 10px; margin-left: 10px;" />
                 <input class="btn btn-primary" id="btnn" type="submit" value="Sign Out" style="width: 120px; margin-top: 10px; margin-left: 10px;" /><br>
-
-                <table style="margin-top: 10px;">
-                    <tr>
-                        <td rowspan="11" style="max-width: 100%;">
-                            <video autoplay="true" id="videoElement" style="max-width: 100%;"></video>
-                        </td>
+                <form action="/guest/save" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="photo" />
+                    <table style="margin-top: 10px;">
                         <tr>
-                            <td colspan="2"><label style="margin-right: 20px; margin-left: 10px;">GUEST CARD ID</label></td>
-                            <td colspan="2"><input type="text" class="form-control" style="width: 300px; margin-top: 5px; margin-right: 20px;" /></td>
-                            <td><input type="checkbox" name="Manual_Card" style="margin-right: 5px;" /><label>Manual Card No</label></td>
+                            <td rowspan="11" style="max-width: 100%;">
+                                <video id="video" width="640" height="480" autoplay style="max-width: 100%;"></video>
+                            </td>
+                            <tr>
+                                <td colspan="2"><label style="margin-right: 20px; margin-left: 10px;">GUEST CARD ID</label></td>
+                                <td colspan="2"><input type="text" class="form-control" style="width: 300px; margin-top: 5px; margin-right: 20px;" name="manual_card_no" /></td>
+                                <td><input type="checkbox" name="Manual_Card" style="margin-right: 5px;" /><label>Manual Card No</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <hr style="margin-left: 10px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label style="margin-right: 10px; margin-left: 10px;">ID Type</label></td>
+                                @foreach($types as $type)
+                                <td><input type="radio" style="margin-right: 5px; margin-left: 10px;" name="id_type" value="{{ $type->id }}" /><label>{{ $type->name }}</label></td>
+                                @endforeach
+                                
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="4"><input type="radio" style="margin-left: 10px; margin-right: 5px;" /><label>Other</label></td>
+                            </tr>
+                            <tr>
+                                <td><label style="margin-right: 20px; margin-left: 10px;">ID No.</label></td>
+                                <td colspan="2"><input type="text" class="form-control" style="width: 330px; margin-right: 20px;" name="id_nomor" /></td>
+                                <td colspan="2"><input type="submit" class="btn btn-primary" value="Check List Of Guest" style="width: 100%;margin-right: 5px;" /></td>
+                            </tr>
+                            <tr>
+                                <td><label style="margin-right: 20px; margin-left: 10px;">Name</label></td>
+                                <td colspan="4"><input type="text" class="form-control" style="width: 100%;margin-top: 10px;" name="name_guest" /></td>
+                            </tr>
+                            <tr>
+                                <td><label style="margin-right: 20px; margin-left: 10px;">Company</label></td>
+                                <td colspan="4"><input type="text" class="form-control" style="width: 100%;margin-top: 10px;" name="company" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <hr style="margin-left: 10px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label style="margin-right: 10px; margin-left: 10px;">Purpose</label></td>
+                                @foreach($purposes as $purpose)
+                                <td><input type="radio" style="margin-right: 5px; margin-left: 10px;" name="purpose" value="{{ $purpose->id }}" /><label>{{ $purpose->name }}</label></td>
+                                @endforeach
+                            </tr>
+                            <tr>
+                                <td></td>
+                                
+                            </tr>
                         </tr>
                         <tr>
+                            <td><input class="btn btn-primary" type="button" id="snap" style="width: 230px; margin-top: 10px; margin-left: 10px;" value="SNAP" /><br></td>
+                            <td><label style="margin-left: 10px;">Area</label></td>
+                            @foreach($areas as $area)
+                            <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px;" value="{{ $area->id }}" name="area" /><label>{{ $area->name }}</label><br></td>
+                            @endforeach
+                        </tr>
+                        <tr>
+                            <td><input class="btn btn-primary" type="submit" style="width: 230px; margin-top: 10px; margin-left: 10px;" value="CANCEL" /></td>
+                            <td></td>
+                            
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><label style="margin-left: 10px;">Duration</label></td>
+                            <td><input type="text" class="form-control" style="width: 100%;" name="duration" /></td>
+                            <td><label style="margin-left: 10px;">Hours</label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><label style="margin-left: 10px;">Partner</label></td>
+                            <td><input type="text" class="form-control" style="width: 100%; margin-top: 10px;" name="partner" /></td>
+                            <td><label style="margin-left: 10px;">People</label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><label style="margin-left: 10px;">Excourt</label></td>
+                            <td colspan="4"><input type="text" class="form-control" style="width: 100%; margin-top: 10px;" name="excourt" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
                             <td colspan="5">
                                 <hr style="margin-left: 10px;">
                             </td>
                         </tr>
                         <tr>
-                            <td><label style="margin-right: 10px; margin-left: 10px;">ID Type</label></td>
-                            <td><input type="radio" style="margin-right: 5px; margin-left: 10px;" /><label>Citizen ID</label></td>
-                            <td><input type="radio" style="margin-right: 5px; margin-left: 10px;" /><label>Driving License</label></td>
-                            <td><input type="radio" style="margin-left: 10px; margin-right: 5px;" /><label>Passport</label></td>
-                            <td><input type="radio" style="margin-left: 10px; margin-right: 5px;" /><label>Student ID</label></td>
-                        </tr>
-                        <tr>
                             <td></td>
-                            <td colspan="4"><input type="radio" style="margin-left: 10px; margin-right: 5px;" /><label>Other</label></td>
+                            <td colspan="2"><input type="submit" class="btn btn-primary" value="Save" style="width: 90%;margin-right: 5px;" /></td>
+                            <td colspan="2"><input type="reset" class="btn btn-primary" value="Cancel" style="width: 90%;margin-right: 5px;" /></td>
                         </tr>
-                        <tr>
-                            <td><label style="margin-right: 20px; margin-left: 10px;">ID No.</label></td>
-                            <td colspan="2"><input type="text" class="form-control" style="width: 330px; margin-right: 20px;" /></td>
-                            <td colspan="2"><input type="submit" class="btn btn-primary" value="Check List Of Guest" style="width: 100%;margin-right: 5px;" /></td>
-                        </tr>
-                        <tr>
-                            <td><label style="margin-right: 20px; margin-left: 10px;">Name</label></td>
-                            <td colspan="4"><input type="text" class="form-control" style="width: 100%;margin-top: 10px;" /></td>
-                        </tr>
-                        <tr>
-                            <td><label style="margin-right: 20px; margin-left: 10px;">Company</label></td>
-                            <td colspan="4"><input type="text" class="form-control" style="width: 100%;margin-top: 10px;" /></td>
-                        </tr>
-                        <tr>
-                            <td colspan="5">
-                                <hr style="margin-left: 10px;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label style="margin-right: 10px; margin-left: 10px;">Purpose</label></td>
-                            <td><input type="radio" style="margin-right: 5px; margin-left: 10px;" /><label>Meeting</label></td>
-                            <td><input type="radio" style="margin-right: 5px; margin-left: 10px;" /><label>Visit</label>
-                                <input type="radio" style="margin-right: 5px; margin-left: 10px;" /><label>Benchmark</label></td>
-                            <td><input type="radio" style="margin-left: 10px; margin-right: 5px;" /><label>Audit</label></td>
-                            <td><input type="radio" style="margin-left: 10px; margin-right: 5px;" /><label>Investigation</label></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="radio" style="margin-left: 10px; margin-right: 5px;" /><label>Daily Working</label></td>
-                            <td colspan="3"><input type="radio" style="margin-left: 10px; margin-right: 5px;" /><label>Other</label></td>
-                        </tr>
-                    </tr>
-                    <tr>
-                        <td><input class="btn btn-primary" type="submit" style="width: 230px; margin-top: 10px; margin-left: 10px;" value="SNAP" /><br></td>
-                        <td><label style="margin-left: 10px;">Area</label></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px;" /><label>Security Pos</label><br></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px;" /><label>Workshop 1</label><br></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px;" /><label>Workshop 2</label><br></td>
-                    </tr>
-                    <tr>
-                        <td><input class="btn btn-primary" type="submit" style="width: 230px; margin-top: 10px; margin-left: 10px;" value="CANCEL" /></td>
-                        <td></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px;" /><label>Hangar 1</label><br></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px;" /><label>Hangar 2</label><br></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px;" /><label>Hangar 3</label><br></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px; margin-top: 15px;" /><label>Engine Shop</label><br></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px; margin-top: 15px;" /><label>Material Building</label><br></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px; margin-top: 15px;" /><label>GSE Building</label><br></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px; margin-top: 15px;" /><label>Facility Building</label><br></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px; margin-top: 15px;" /><label>Marketing Building</label><br></td>
-                        <td><input type="checkbox" style="margin-left: 10px; margin-right: 5px; margin-top: 15px;" /><label>IWWT Building</label><br></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><label style="margin-left: 10px;">Duration</label></td>
-                        <td><input type="text" class="form-control" style="width: 100%;" /></td>
-                        <td><label style="margin-left: 10px;">Hours</label></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><label style="margin-left: 10px;">Partner</label></td>
-                        <td><input type="text" class="form-control" style="width: 100%; margin-top: 10px;" /></td>
-                        <td><label style="margin-left: 10px;">People</label></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><label style="margin-left: 10px;">Excourt</label></td>
-                        <td colspan="4"><input type="text" class="form-control" style="width: 100%; margin-top: 10px;" /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td colspan="5">
-                            <hr style="margin-left: 10px;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td colspan="2"><input type="submit" class="btn btn-primary" value="Save" style="width: 90%;margin-right: 5px;" /></td>
-                        <td colspan="2"><input type="submit" class="btn btn-primary" value="Cancel" style="width: 90%;margin-right: 5px;" /></td>
-                    </tr>
-                </table>
+                    </table>
+                </form>
             </div>
+            <div class="col-sm-12">
+                <canvas id="canvas" width="640" height="480"></canvas>
+            </div>    
         </div>
     </div>
 </body>
 <script>
-    var video = document.querySelector("#videoElement");
 
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+    // Elements for taking the snapshot
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var video = document.getElementById('video');
 
-    if (navigator.getUserMedia) {
-        navigator.getUserMedia({
-            video: true
-        }, handleVideo, videoError);
+    // Trigger photo take
+    document.getElementById("snap").addEventListener("click", function() {
+        context.drawImage(video, 0, 0, 640, 480);
+
+        var dataURL = canvas.toDataURL();
+        
+        $('input[name=photo]').val(dataURL);
+    });
+    // Grab elements, create settings, etc.
+    var video = document.getElementById('video');
+
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Not adding `{ audio: true }` since we only want video now
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        });
     }
 
-    function handleVideo(stream) {
-        video.src = window.URL.createObjectURL(stream);
+    /* Legacy code below: getUserMedia 
+    else if(navigator.getUserMedia) { // Standard
+        navigator.getUserMedia({ video: true }, function(stream) {
+            video.src = stream;
+            video.play();
+        }, errBack);
+    } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+        navigator.webkitGetUserMedia({ video: true }, function(stream){
+            video.src = window.webkitURL.createObjectURL(stream);
+            video.play();
+        }, errBack);
+    } else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
+        navigator.mozGetUserMedia({ video: true }, function(stream){
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        }, errBack);
     }
-
-    function videoError(e) {
-        // do something
-    }
+    */
 </script>
 
 </html>

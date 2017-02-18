@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts/depan');
-});
+// Route::get('/', function () {
+//     return view('layouts/depan');
+// });
+Route::get('/', 'GuestController@index');
+Route::post('/guest/save', 'GuestController@simpan');
