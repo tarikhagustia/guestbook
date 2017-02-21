@@ -21,11 +21,23 @@ class GuestController extends Controller
              "purposes" => $purposes
          ]);
     }
+    public function contoh()
+    {
+         $idtype = Idtype::all();
+         $areas = Area::all();
+         $purposes = Purpose::all();
+
+         return view('layouts/contoh' , [
+             "types" => $idtype,
+             "areas" => $areas,
+             "purposes" => $purposes
+         ]);
+    }
     public function simpan(Request $request)
     {
         $path = "images/";
         $images = $this->save_base64_image($request->photo, $request->name_guest, $path);
-        
+
         $guest = new Guest;
         $guest->card_id = $request->manual_card_no;
         $guest->idtype_id = $request->id_type;
@@ -43,7 +55,7 @@ class GuestController extends Controller
     }
     public function save_base64_image($base64_image_string, $output_file_without_extentnion, $path_with_end_slash="" ) {
         $output_file_with_extentnion = "";
-        //usage:  if( substr( $img_src, 0, 5 ) === "data:" ) {  $filename=save_base64_image($base64_image_string, $output_file_without_extentnion, getcwd() . "/application/assets/pins/$user_id/"); }      
+        //usage:  if( substr( $img_src, 0, 5 ) === "data:" ) {  $filename=save_base64_image($base64_image_string, $output_file_without_extentnion, getcwd() . "/application/assets/pins/$user_id/"); }
         //
         //data is like:    data:image/png;base64,asdfasdfasdf
         $splited = explode(',', substr( $base64_image_string , 5 ) , 2);

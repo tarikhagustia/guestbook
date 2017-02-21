@@ -15,4 +15,6 @@
 //     return view('layouts/depan');
 // });
 Route::get('/', 'GuestController@index');
+Route::get('/contoh', 'GuestController@contoh');
+
 Route::post('/guest/save', 'GuestController@simpan');
