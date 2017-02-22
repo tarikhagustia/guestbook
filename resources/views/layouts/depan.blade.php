@@ -2,15 +2,15 @@
 
 <head>
     <title>Tampilan</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
+    <script src="{{ asset('js/bootstrap.min.js') }}" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/aplikasi.css') }}">
 </head>
 
 <body>
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-md  navbar-inverse bg-inverse">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -43,6 +43,8 @@
                     <hr/>
                     <div class="center">
                       <button class="btn btn-primary btn-lg btn-block">Snap</button>
+                      <button class="btn btn-success btn-lg btn-block">Save</button>
+
                     </div>
                 </div>
                 <div class="col-sm-8">
@@ -83,18 +85,18 @@
                       <input type="text" class="form-control" name="" value="">
                     </div>
                     <div class="col-sm-3">
-                      <button type="button" class="btn btn-success" name="button">Check list Guest</button>
+                      <button type="button" class="btn btn-success btn-block" name="button">Check list Guest</button>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="card_id" class="col-sm-2 col-form-label">Name</label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-10">
                       <input type="text" class="form-control" name="" value="">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="card_id" class="col-sm-2 col-form-label">Company</label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-10">
                       <input type="text" class="form-control" name="" value="">
                     </div>
                   </div>
@@ -115,6 +117,45 @@
                           Option one is this and that&mdash;be sure to include why it's great
                         </label>
                       </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="card_id" class="col-sm-2 col-form-label">Area</label>
+                    <div class="col-sm-9">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" name="area" id="gridRadios1" value="option1">
+                          Option one is this and that&mdash;be sure to include why it's great
+                        </label>
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" name="area" id="gridRadios1" value="option1">
+                          Option one is this and that&mdash;be sure to include why it's great
+                        </label>
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" name="area" id="gridRadios1" value="option1">
+                          Option one is this and that&mdash;be sure to include why it's great
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="card_id" class="col-sm-2 col-form-label">Duration</label>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control" name="" value="">
+                    </div>
+                     <span style="margin-top : 5px;">Hourse</span>
+                  </div>
+                  <div class="form-group row">
+                    <label for="card_id" class="col-sm-2 col-form-label">Partner</label>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control" name="" value="">
+                    </div>
+                     <span style="margin-top : 5px;">People</span>
+                  </div>
+                  <div class="form-group row">
+                    <label for="card_id" class="col-sm-2 col-form-label">Excort</label>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control" name="" value="">
                     </div>
                   </div>
                 </div>
