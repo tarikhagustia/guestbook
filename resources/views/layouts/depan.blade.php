@@ -2,10 +2,9 @@
 
 <head>
     <title>Tampilan</title>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
     <!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
-    <script src="{{ asset('js/bootstrap.min.js') }}" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/aplikasi.css') }}">
 </head>
 
@@ -33,7 +32,7 @@
     <div class="container">
         <div class="row vertical-align">
           <div class="col-sm-12">
-            <div class="main-content">
+            <div class="main-content card card-1">
               <div class="row">
                 <div class="col-sm-4">
                     <div class="embed-responsive embed-responsive-1by1">
@@ -42,7 +41,7 @@
                     </div>
                     <hr/>
                     <div class="center">
-                      <button class="btn btn-primary btn-lg btn-block">Snap</button>
+                      <button class="btn btn-primary btn-lg btn-block ">Snap</button>
                       <button class="btn btn-success btn-lg btn-block">Save</button>
 
                     </div>
@@ -164,5 +163,9 @@
         </div>
     </div>
     </div>
+<script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('js/tether.min.js') }}" ></script>
+<script src="{{ asset('js/bootstrap.min.js') }}" ></script>
+
 </body>
 </html>
