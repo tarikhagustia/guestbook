@@ -17,4 +17,8 @@
 Route::get('/', 'GuestController@index');
 Route::get('/contoh', 'GuestController@contoh');
 
-Route::post('/guest/save', 'GuestController@simpan');
+Route::post('/guest/save', 'GuestController@simpan')->name('guest_save');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

@@ -7,6 +7,7 @@ use App\Idtype;
 use App\Area;
 use App\Purpose;
 use App\Guest;
+use App\Card;
 class GuestController extends Controller
 {
     public function index()
@@ -15,7 +16,7 @@ class GuestController extends Controller
          $areas = Area::all();
          $purposes = Purpose::all();
 
-         return view('layouts/depan' , [
+         return view('guest' , [
              "types" => $idtype,
              "areas" => $areas,
              "purposes" => $purposes
@@ -35,16 +36,26 @@ class GuestController extends Controller
     }
     public function simpan(Request $request)
     {
+        $this->validate($request, [
+            'card_id' => 'required',
+            'idtype_id' => 'required',
+            'nomor_id' => 'required',
+            'name' => 'required',
+            'company' => 'required',
+            'purpose_id' => 'required',
+            'area_id' => 'required',
+            'duration' => 'required',
+            'excourt' => 'required',
+        ]);
         $path = "images/";
-        $images = $this->save_base64_image($request->photo, $request->name_guest, $path);
-
+        $images = $this->save_base64_image($request->photo, $request->name, $path);
         $guest = new Guest;
-        $guest->card_id = $request->manual_card_no;
-        $guest->idtype_id = $request->id_type;
-        $guest->purpose_id = $request->purpose;
-        $guest->area_id = $request->area;
-        $guest->nomor_id = $request->manual_card_no;
-        $guest->name = $request->name_guest;
+        $guest->card_id = $this->check_card($request->card_id);
+        $guest->idtype_id = $request->idtype_id;
+        $guest->purpose_id = $request->purpose_id;
+        $guest->area_id = $request->area_id;
+        $guest->nomor_id = $request->nomor_id;
+        $guest->name = $request->name;
         $guest->company = $request->company;
         $guest->duration = $request->duration;
         $guest->partner = $request->partner;
@@ -52,6 +63,22 @@ class GuestController extends Controller
         $guest->photo = $path . $images;
         $guest->save();
         return redirect('/');
+    }
+    private function check_card($card_id)
+    {
+      $card = Card::where('uid', 1010)->get();
+      if(count($card) <= 1)
+      {
+        $card = new Card;
+        $card->uid =  $card_id;
+        $card->is_active = true;
+        $card->save();
+
+        return $card->id;
+      }else{
+        $card = Card::where('uid', 1010)->fisrt();
+        return $card->id;
+      }
     }
     public function save_base64_image($base64_image_string, $output_file_without_extentnion, $path_with_end_slash="" ) {
         $output_file_with_extentnion = "";
