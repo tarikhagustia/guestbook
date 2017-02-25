@@ -24,7 +24,7 @@
                 <div class="form-group row {{ $errors->has('card_id') ? ' has-danger' : '' }}">
                   <label for="card_id" class="col-sm-3 col-form-label">GUEST CARD ID</label>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control" id="inputEmail3" name="card_id" />
+                    <input type="text" class="form-control" id="inputEmail3" name="card_id" autofocus />
                     @if ($errors->has('card_id'))
                         <span class="form-control-feedback">
                             <strong>{{ $errors->first('card_id') }}</strong>

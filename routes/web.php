@@ -19,6 +19,7 @@ Route::get('/contoh', 'GuestController@contoh');
 
 Route::post('/guest/save', 'GuestController@simpan')->name('guest_save');
 
-Auth::routes();
+Route::get('/login' , 'LoginController@index');
+Route::post('/login' , 'LoginController@postLogin')->name('login');
 
 Route::get('/home', 'HomeController@index');
