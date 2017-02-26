@@ -62,7 +62,7 @@ class GuestController extends Controller
         $guest->excourt = $request->excourt;
         $guest->photo = $path . $images;
         $guest->save();
-        return redirect('/');
+        return redirect('/thanks');
     }
     private function check_card($card_id)
     {
@@ -101,5 +101,9 @@ class GuestController extends Controller
         }
         file_put_contents( $path_with_end_slash . $output_file_with_extentnion, base64_decode($data) );
         return $output_file_with_extentnion;
+    }
+    public function thanks()
+    {
+      return view('thanks');
     }
 }

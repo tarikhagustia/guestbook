@@ -5,7 +5,7 @@
     <div class="row vertical-align">
       <div class="col-sm-12">
         <div class="main-content card card-1">
-          <form class="" action="{{ route('guest_save') }}" method="post">
+          <form class="" action="{{ route('guest_save') }}" method="post" id="testForm">
             {{ csrf_field() }}
             <canvas id="canvas" width="640" height="480" hidden></canvas>
             <input type="hidden" name="photo" />
@@ -24,7 +24,7 @@
                 <div class="form-group row {{ $errors->has('card_id') ? ' has-danger' : '' }}">
                   <label for="card_id" class="col-sm-3 col-form-label">GUEST CARD ID</label>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control" id="inputEmail3" name="card_id" autofocus />
+                    <input type="text" class="form-control" id="inputEmail3" name="card_id" autofocus tabindex="1"/>
                     @if ($errors->has('card_id'))
                         <span class="form-control-feedback">
                             <strong>{{ $errors->first('card_id') }}</strong>
@@ -59,7 +59,7 @@
                 <div class="form-group row {{ $errors->has('nomor_id') ? ' has-danger' : '' }}">
                   <label for="card_id" class="col-sm-2 col-form-label">ID Nomor</label>
                   <div class="col-sm-7">
-                    <input type="text" class="form-control" name="nomor_id" value="">
+                    <input type="text" class="form-control" name="nomor_id" value="" tabindex="2">
                     @if ($errors->has('nomor_id'))
                         <span class="form-control-feedback">
                             <strong>{{ $errors->first('nomor_id') }}</strong>
@@ -73,7 +73,7 @@
                 <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
                   <label for="card_id" class="col-sm-2 col-form-label">Name</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" value="">
+                    <input type="text" class="form-control" name="name" value="" tabindex="3">
                     @if ($errors->has('name'))
                         <span class="form-control-feedback">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -182,7 +182,7 @@ document.getElementById("snap").addEventListener("click", function() {
     // $('#snap').disable(true);
     $(canvas).show();
     var dataURL = canvas.toDataURL();
-    console.log(dataURL);
+    // console.log(dataURL);
     $('input[name=photo]').val(dataURL);
 });
 // Grab elements, create settings, etc.
@@ -215,5 +215,24 @@ else if(navigator.getUserMedia) { // Standard
     }, errBack);
 }
 */
+
+var $targets = $('#testForm').find('input, button'),
+    steps = $targets.map(function() {
+        return $(this).attr('tabindex');
+    }).get();
+
+$('#testForm').on('keypress', 'input, button', function(e) {
+    if (e.keyCode == 13) {
+        // console.log('Key Enter');
+        var current = $.inArray($(this).attr('tabindex'), steps),
+            next = steps[++current % steps.length];
+        $targets.filter('[tabindex="' + next + '"]').focus();
+        e.preventDefault()
+    }
+});
+$('#testForm').on('submit', function(e) {
+
+});
+
 </script>
 @endsection

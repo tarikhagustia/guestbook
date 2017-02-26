@@ -18,8 +18,13 @@ Route::get('/', 'GuestController@index');
 Route::get('/contoh', 'GuestController@contoh');
 
 Route::post('/guest/save', 'GuestController@simpan')->name('guest_save');
+Route::get('/thanks', 'GuestController@thanks')->name('guest_thanks');
 
 Route::get('/login' , 'LoginController@index');
 Route::post('/login' , 'LoginController@postLogin')->name('login');
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/checkout' , 'CheckoutController@index')->name('checkout');
+Route::post('/checkout' , 'CheckoutController@postData');
+Route::post('/checkout/guest' , 'CheckoutController@postCheckout');

@@ -34,7 +34,7 @@ class CreateGuestTable extends Migration
                 $table->string('partner');
                 $table->string('excourt');
                 $table->string('photo')->nullable();
-            
+                $table->datetime('checkout_time')->nullable();
                 $table->timestamps();
             });
         }
