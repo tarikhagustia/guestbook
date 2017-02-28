@@ -1,7 +1,7 @@
 @extends('layouts.depan')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row vertical-align">
       <div class="col-sm-12">
         <div class="main-content card card-1">
