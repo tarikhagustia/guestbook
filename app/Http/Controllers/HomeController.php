@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Sentinel;
 class HomeController extends Controller
 {
     /**
@@ -13,7 +13,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -23,6 +22,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // dd(Sentinel::getUser());
         return view('home');
     }
 }

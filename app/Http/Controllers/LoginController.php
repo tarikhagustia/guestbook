@@ -13,6 +13,15 @@ class LoginController extends Controller
     }
     public function postLogin(Request $request)
     {
-      var_dump(Sentinel::authenticate($request->all()));
+      Sentinel::authenticate($request->all());
+
+      if(Sentinel::check()){
+        return redirect('/home');
+      }
+    }
+    public function logout()
+    {
+      Sentinel::logout();
+      return redirect('/home');
     }
 }

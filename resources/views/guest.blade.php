@@ -148,7 +148,7 @@
                    <span style="margin-top : 5px;">People</span>
                 </div>
                 <div class="form-group row {{ $errors->has('excourt') ? ' has-danger' : '' }}">
-                  <label for="card_id" class="col-sm-2 col-form-label">Excort</label>
+                  <label for="card_id" class="col-sm-2 col-form-label">Escort</label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control" name="excourt" value="">
                     @if ($errors->has('excourt'))
