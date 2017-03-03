@@ -1,5 +1,5 @@
 body {
-    background-color: #F3FAB6;
+    background-color: #0e2c47;
 }
 
 .main-content {
@@ -46,4 +46,7 @@ body {
 
 .card-5 {
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+.navbar-inverse {
+  background-color: #0f2233 !important;
 }
