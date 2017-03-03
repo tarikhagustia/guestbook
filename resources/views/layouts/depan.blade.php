@@ -44,8 +44,7 @@
     <ul class="navbar-nav navbar-right">
         <!-- Authentication Links -->
         @if (Sentinel::guest())
-            <li><a href="">Login</a></li>
-            <li><a href="">Register</a></li>
+            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
         @else
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
